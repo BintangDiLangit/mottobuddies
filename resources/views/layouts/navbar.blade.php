@@ -5,19 +5,6 @@
         <i class="fa fa-bars"></i>
     </button>
 
-    <!-- Topbar Search -->
-    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-        <div class="input-group">
-            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                aria-label="Search" aria-describedby="basic-addon2">
-            <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                    <i class="fas fa-search fa-sm"></i>
-                </button>
-            </div>
-        </div>
-    </form>
-
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
 
@@ -87,65 +74,10 @@
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <a class="dropdown-item" href="{{ route('profil.show') }}">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profile
 
-                </a>
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    Tambah Pengeluaran
-                </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">Tambah Pengeluaran</h5>
-                            </div>
-                            <form action="{{ route('pengeluaran.store') }}" method="post"
-                                enctype="multipart/form-data">
-                                @csrf
-                                <div class="modal-body">
-                                    <div class="mb-3 form-group">
-                                        <label for="judul_transaksi_pengeluaran" class="form-label">Judul Transaksi
-                                            Pengeluaran</label>
-                                        <input type="text" class="form-control" name="judul_transaksi_pengeluaran"
-                                            placeholder="Masukkan nama sparepart" id="judul_transaksi_pengeluaran"
-                                            aria-describedby="judul_transaksi_pengeluaran">
-                                    </div>
-                                    <div class="mb-3 form-group">
-                                        <label for="jumlah" class="form-label">Jumlah Barang</label>
-                                        <input type="number" class="form-control" name="jumlah"
-                                            placeholder="Masukkan harga jual" id="jumlah" aria-describedby="jumlah">
-                                    </div>
-                                    <div class="mb-3 form-group">
-                                        <label for="total_biaya" class="form-label">Total Biaya</label>
-                                        <input type="number" class="form-control" name="total_biaya"
-                                            placeholder="Masukkan total biaya" id="total_biaya"
-                                            aria-describedby="total_biaya">
-                                    </div>
-                                    <div class="mb-3 form-group">
-                                        <label for="tanggal" class="form-label">Tanggal</label>
-                                        <input type="date" class="form-control" name="tanggal"
-                                            placeholder="Masukkan harga jual" id="tanggal" aria-describedby="tanggal">
-                                    </div>
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Kembali</button>
-                                    <button type="submit" class="btn btn-primary">Tambah</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <a class="dropdown-item" href="#">
-                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Activity Log
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">

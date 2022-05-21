@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
+use App\Models\Invoice;
 use App\Models\TipeKendaraan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -13,7 +14,8 @@ class BookingController extends Controller
 {
     public function index()
     {
-        $bookings = Booking::with('tipeKendaraan', 'user')->where('user_id', Auth::user()->id)->get();
+        $bookings = Booking::with('tipeKendaraan', 'user', 'invoice')->where('user_id', Auth::user()->id)->get();
+
         return view('user.booking.index', compact('bookings'));
     }
 
@@ -93,5 +95,20 @@ class BookingController extends Controller
         $addingMonths = new Carbon($tipe->waktu_booking);
         $recommendation = $addingMonths->addMonths(3);
         return view('user.booking.create', compact('tipe', 'recommendation'));
+    }
+
+    public function show($id)
+    {
+        $booking = Booking::with('invoice', 'tipeKendaraan')->find($id);
+        if ($booking->invoice != null) {
+            $invoice = Invoice::with('spareparts')->find($booking->invoice->id);
+
+            $biayaTotalSparepart = 0;
+            for ($i = 0; $i < count($invoice->spareparts); $i++) {
+                $biayaTotalSparepart += $invoice->spareparts[$i]->harga_jual * $invoice->spareparts[$i]->pivot->amount;
+            }
+            return view('user.booking.show', compact('booking', 'invoice', 'biayaTotalSparepart'));
+        }
+        return view('user.booking.show', compact('booking'));
     }
 }

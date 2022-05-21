@@ -17,8 +17,8 @@ class Sparepart extends Model
         'stok'
     ];
 
-    public function spareparts()
+    public function invoices()
     {
-        return $this->hasMany(PembelianSparepart::class);
+        return $this->belongsToMany(Invoice::class, 'sparepart_invoice');
     }
 }

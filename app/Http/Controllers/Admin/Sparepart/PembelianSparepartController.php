@@ -40,7 +40,7 @@ class PembelianSparepartController extends Controller
             ]);
 
             Sparepart::find($request->sparepart_id)->update([
-                'stok' =>  $request->jumlah,
+                'stok' =>  $sparepart->stok + $request->jumlah,
             ]);
 
             Pengeluaran::create([

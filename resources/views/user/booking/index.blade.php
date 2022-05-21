@@ -22,6 +22,7 @@
                             <th>Tipe Kendaraan</th>
                             <th>Tanggal Booking</th>
                             <th>Jam Booking</th>
+                            <th>Detail</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -30,6 +31,7 @@
                             <th>Tipe Kendaraan</th>
                             <th>Tanggal Booking</th>
                             <th>Jam Booking</th>
+                            <th>Detail</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -52,6 +54,19 @@
                                         $t = strtotime($item->waktu_booking);
                                         echo date('H-i', $t) . ' WIB';
                                     @endphp
+                                </td>
+                                <td>
+                                    @if ($item->invoice == null)
+                                        <a href="{{ route('booking.show', $item->id) }}" type="button"
+                                            class="badge rounded-pill bg-info text-light">
+                                            Belum ada tagihan
+                                        </a>
+                                    @else
+                                        <a href="{{ route('booking.show', $item->id) }}" type="button"
+                                            class="badge rounded-pill bg-warning text-dark">
+                                            Tagihan
+                                        </a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

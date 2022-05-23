@@ -145,6 +145,19 @@
                 </div>
             </div>
         </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Info Produk
+        </div>
+        <li class="nav-item {{ request()->is('user/info-produk') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('user.info.produk') }}">
+                <i class="fas fa-fw fa-table"></i>
+                <span> Info Produk</span></a>
+        </li>
     @endif
 
     <!-- Divider -->

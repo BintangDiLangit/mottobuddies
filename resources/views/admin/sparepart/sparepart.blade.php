@@ -1,21 +1,21 @@
 @extends('layouts.master')
 @section('title')
-    Data Sparepart
+    Info Produk
 @endsection
 
 @section('content')
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Data Sparepart</h1>
+    <h1 class="h3 mb-2 text-gray-800">Info Produk</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data Sparepart</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Info Produk</h6>
         </div>
         <div class="card-header py-3">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Tambah Data Sparepart
+                Tambah Info Produk
             </button>
 
             <!-- Modal -->
@@ -24,16 +24,16 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Tambah Data Sparepart</h5>
+                            <h5 class="modal-title" id="staticBackdropLabel">Tambah Info Produk</h5>
                         </div>
                         <form action="{{ route('sparepart-kendaraan.store') }}" method="post"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="modal-body">
                                 <div class="mb-3 form-group">
-                                    <label for="nama_sparepart" class="form-label">Nama Sparepart</label>
+                                    <label for="nama_sparepart" class="form-label">Nama Produk</label>
                                     <input type="text" class="form-control" name="nama_sparepart"
-                                        placeholder="Masukkan nama sparepart" id="nama_sparepart"
+                                        placeholder="Masukkan nama produk" id="nama_sparepart"
                                         aria-describedby="nama_sparepart">
                                 </div>
                                 <div class="mb-3 form-group">
@@ -47,9 +47,9 @@
                                         placeholder="Masukkan harga jual" id="harga_jual" aria-describedby="harga_jual">
                                 </div>
                                 <div class="mb-3 form-group">
-                                    <label for="gambar_sparepart" class="form-label">Gambar Sparepart</label>
+                                    <label for="gambar_sparepart" class="form-label">Gambar Produk</label>
                                     <input type="file" class="form-control" name="gambar_sparepart"
-                                        placeholder="Masukkan gambar sparepart" id="gambar_sparepart"
+                                        placeholder="Masukkan gambar produk" id="gambar_sparepart"
                                         aria-describedby="gambar_sparepart">
                                 </div>
                                 <div class="mb-3 form-group">
@@ -78,7 +78,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Nama Sparepart</th>
+                            <th>Nama Produk</th>
                             <th>Harga Beli</th>
                             <th>Harga Jual</th>
                             <th>Stok</th>
@@ -89,7 +89,7 @@
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Nama Sparepart</th>
+                            <th>Nama Produk</th>
                             <th>Harga Beli</th>
                             <th>Harga Jual</th>
                             <th>Stok</th>
@@ -124,7 +124,7 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="staticBackdropLabel{{ $item->id }}">
-                                                        Data Sparepart</h5>
+                                                        Info Produk</h5>
                                                 </div>
                                                 <form action="{{ route('sparepart-kendaraan.update', $item->id) }}"
                                                     method="post" enctype="multipart/form-data">
@@ -133,9 +133,9 @@
                                                     <div class="modal-body">
                                                         <div class="mb-3 form-group">
                                                             <label for="nama_sparepart" class="form-label">Nama
-                                                                Sparepart</label>
+                                                                Produk</label>
                                                             <input type="text" class="form-control" name="nama_sparepart"
-                                                                placeholder="Masukkan nama sparepart" id="nama_sparepart"
+                                                                placeholder="Masukkan nama produk" id="nama_sparepart"
                                                                 aria-describedby="nama_sparepart"
                                                                 value="{{ $item->nama_sparepart }}">
                                                         </div>
@@ -161,10 +161,9 @@
                                                         </div>
                                                         <div class="mb-3 form-group">
                                                             <label for="gambar_sparepart" class="form-label">Gambar
-                                                                Sparepart Baru</label>
+                                                                Produk Baru</label>
                                                             <input type="file" class="form-control"
-                                                                name="gambar_sparepart"
-                                                                placeholder="Masukkan gambar sparepart"
+                                                                name="gambar_sparepart" placeholder="Masukkan gambar produk"
                                                                 id="gambar_sparepart" aria-describedby="gambar_sparepart">
                                                         </div>
                                                         <div class="mb-3 form-group">
@@ -210,7 +209,7 @@
                                                 <div class="modal-header">
                                                     <h5 class="modal-title"
                                                         id="exampleModalLabelDelete{{ $item->id }}">
-                                                        Hapus Data Sparepart
+                                                        Hapus Info Produk
                                                     </h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
@@ -222,7 +221,7 @@
                                                     <div class="modal-body">
                                                         <div class="mb-3 form-group">
                                                             <label for="basicInput">Anda yakin untuk menghapus data
-                                                                sparepart?</label>
+                                                                produk?</label>
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">

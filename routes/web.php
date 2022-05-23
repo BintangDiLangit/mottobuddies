@@ -41,6 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::post('profile-additional', [ProfilController::class, 'updateProfilAdd'])->name('profil.update.add');
     Route::prefix('user')->group(function () {
         Route::resource('booking', BookingController::class);
+        Route::get('info-produk', [BookingController::class, 'infoProduct'])->name('user.info.produk');
         Route::resource('pembayaran', PembayaranController::class);
         Route::get('create-mandiri', [BookingController::class, 'createMandiri'])->name('booking.create.mandiri');
         Route::get('cek-tipe', [BookingController::class, 'cekTipe'])->name('booking.cek.tipe');

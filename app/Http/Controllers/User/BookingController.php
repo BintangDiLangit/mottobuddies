@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\Invoice;
+use App\Models\Sparepart;
 use App\Models\TipeKendaraan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -110,5 +111,11 @@ class BookingController extends Controller
             return view('user.booking.show', compact('booking', 'invoice', 'biayaTotalSparepart'));
         }
         return view('user.booking.show', compact('booking'));
+    }
+
+    public function infoProduct()
+    {
+        $products = Sparepart::all();
+        return view('user.infoproduk.index', compact('products'));
     }
 }

@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\Admin\Booking\BookingController as AdminBookingController;
 use App\Http\Controllers\Admin\Booking\InvoiceController;
 use App\Http\Controllers\Admin\DataKeuangan\PemasukkanController;
 use App\Http\Controllers\Admin\DataKeuangan\PengeluaranController;
 use App\Http\Controllers\Admin\Sparepart\PembelianSparepartController;
 use App\Http\Controllers\Admin\Sparepart\SparepartController;
 use App\Http\Controllers\Admin\TipeKendaraanController;
+use App\Http\Controllers\Admin\TipsTrickController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\User\BookingController;
 use App\Http\Controllers\User\PembayaranController;
@@ -34,6 +36,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware('auth')->group(function () {
     Route::get('profile', [ProfilController::class, 'showProfil'])->name('profil.show');
     Route::post('profile', [ProfilController::class, 'updateProfil'])->name('profil.update');
+    Route::post('profile-password', [ProfilController::class, 'updateProfilPassword'])->name('profil.update.password');
     Route::post('profile-pic', [ProfilController::class, 'updateProfilPic'])->name('profil.update.pic');
     Route::post('profile-additional', [ProfilController::class, 'updateProfilAdd'])->name('profil.update.add');
     Route::prefix('user')->group(function () {
@@ -53,6 +56,9 @@ Route::middleware('auth')->group(function () {
             Route::resource('pengeluaran', PengeluaranController::class);
             Route::resource('invoice', InvoiceController::class);
             Route::post('verified-invoice/{invoiceid}', [InvoiceController::class, 'verifiedInvoice'])->name('verified.invoice');
+            Route::resource('tips-tricks', TipsTrickController::class);
+            Route::delete('booking/{id}', [AdminBookingController::class, 'bookingDestroy'])->name('admin.booking.destroy');
+            Route::get('booking-list', [AdminBookingController::class, 'bookingList'])->name('admin.booking.list');
         });
     });
 });

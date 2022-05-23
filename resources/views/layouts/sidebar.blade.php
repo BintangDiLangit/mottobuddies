@@ -1,11 +1,11 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-tools" style="font-size: 150%"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Motto <sup>Buddies</sup></div>
+        <div class="sidebar-brand-text mx-3">King <sup>Service</sup></div>
     </a>
 
     <!-- Divider -->
@@ -69,6 +69,20 @@
                 <span>Pengeluaran</span></a>
         </li>
 
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Booking
+        </div>
+        <li class="nav-item {{ request()->is('admin/booking-list') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.booking.list') }}">
+                <i class="fas fa-fw fa-table"></i>
+                <span>List Booking</span></a>
+        </li>
+
         <!-- Divider -->
         <hr class="sidebar-divider">
 
@@ -85,6 +99,18 @@
             <a class="nav-link" href="{{ route('invoice.create') }}">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Tambah Invoice</span></a>
+        </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Tips & Tricks
+        </div>
+        <li class="nav-item {{ request()->is('admin/tips-tricks') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('tips-tricks.index') }}">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Tips & Tricks</span></a>
         </li>
     @endif
 

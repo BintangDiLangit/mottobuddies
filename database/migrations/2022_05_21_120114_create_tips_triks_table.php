@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('tips_triks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('tipe_kendaraan_id')->constrained()->onDelete('cascade');
+            $table->text('judul');
+            $table->text('gambar');
+            $table->longText('isi');
             $table->timestamps();
         });
     }

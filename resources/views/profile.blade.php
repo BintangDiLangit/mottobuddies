@@ -18,12 +18,17 @@
             <!-- Illustrations -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Foto Profil</h6>
                 </div>
                 <div class="card-body">
                     <div class="text-left">
-                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4 img-profile rounded-circle" style="width: 25rem;"
-                            src="{{ asset('assets/img/undraw_posting_photo.svg') }}" alt="...">
+                        @if (Auth::user()->photo_profile == null)
+                            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4 img-profile rounded-circle" style="width: 25rem;"
+                                src="{{ asset('assets/img/undraw_profile.svg') }}" alt="...">
+                        @else
+                            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4 img-profile rounded-circle" style="width: 25rem;"
+                                src="{{ Auth::user()->photo_profile }}" alt="...">
+                        @endif
                     </div>
 
                     <form action="{{ route('profil.update.pic') }}" method="post" enctype="multipart/form-data">
@@ -58,9 +63,8 @@
                         </div>
                         <div class="mb-3 form-group">
                             <label for="name" class="form-label">Username :</label>
-                            <input type="text" class="form-control" value="{{ Auth::user()->username }} "
-                                name="username" placeholder="Masukkan username" id="username" aria-describedby="username"
-                                required>
+                            <input type="text" class="form-control" value="{{ Auth::user()->username }}" name="username"
+                                placeholder="Masukkan username" id="username" aria-describedby="username" required>
                         </div>
                         <div class="mb-3 form-group">
                             <label for="name" class="form-label">Email :</label>
@@ -120,7 +124,7 @@
                 </div>
                 <div class="card-body">
 
-                    <form action="{{ route('profil.update') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('profil.update.password') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3 form-group">
                             <label for="password_old" class="form-label">Password Lama :</label>
